@@ -22,7 +22,7 @@ class SARPPplot:
         self.plotHyd()
 
     def plotHeight(self):
-        self.__makePlot(self.r.getHeights(), "AoA", "AoA [degrees]")
+        self.__makePlot(self.r.getHeights(), "Height", "Height [m]")
 
     def plotAoA(self):
         self.__makePlot(self.r.getAoA(), "AoA", "AoA [degrees]")
