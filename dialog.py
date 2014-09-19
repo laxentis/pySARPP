@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialog.ui'
 #
-# Created: Fri Sep 19 18:50:13 2014
+# Created: Fri Sep 19 19:28:18 2014
 #      by: PyQt4 UI code generator 4.11.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -37,6 +37,7 @@ class Ui_Dialog(object):
         self.label.setGeometry(QtCore.QRect(10, 10, 61, 21))
         self.label.setObjectName(_fromUtf8("label"))
         self.filename = QtGui.QLineEdit(Dialog)
+        self.filename.setEnabled(False)
         self.filename.setGeometry(QtCore.QRect(70, 10, 301, 20))
         self.filename.setObjectName(_fromUtf8("filename"))
         self.plots = QtGui.QGroupBox(Dialog)

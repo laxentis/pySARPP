@@ -11,7 +11,12 @@ class GUI(QtGui.QDialog):
         QtCore.QObject.connect(self.ui.generateAllButton, QtCore.SIGNAL("clicked()"), self.generateAll)
         QtCore.QObject.connect(self.ui.generateButton, QtCore.SIGNAL("clicked()"), self.generate)
 
+    def openFile(self):
+        fname = QtGui.QFileDialog.getOpenFileName(self, 'Open file')
+        self.ui.filename.setText(fname)
+
     def generate(self):
+        self.openFile()
         self.plotter = SARPPplot(self.ui.filename.text())
         if self.ui.height.checkState() == 2:
             self.plotter.plotHeight()
@@ -33,6 +38,7 @@ class GUI(QtGui.QDialog):
             self.plotter.plotHyd()
 
     def generateAll(self):
+        self.openFile()
         self.plotter = SARPPplot(self.ui.filename.text())
         self.plotter.plotAll()
 
