@@ -5,6 +5,7 @@ Python program to interpret DCS Mig-21bis SARPP data
 
 ##Requirements
 * Python 3
+* PyQt4
 * Matplotlib
 * Numpy
 
