@@ -8,7 +8,12 @@ import numpy as np
 class SARPPplot:
     def __init__(self, filename):
         self.__f = filename
-        self.r = SARPPreader(filename)
+        try:
+            self.r = SARPPreader(filename)
+        except FileNotFoundError:
+            raise FileNotFoundError("Selected file was not found")
+        except Exception:
+            raise Exception("Invalid file syntax")
 
     def plotHeight(self):
         self.__makePlot(self.r.getHeights(), "Height", "Height [m]")

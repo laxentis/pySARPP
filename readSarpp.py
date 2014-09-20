@@ -6,9 +6,22 @@ class SARPPreader:
             Time, Height, IAS, G_v, G_h, RPM, AoA, Hyd_m, Hyd_b, SAU, Fors, Trigger
     """
     def __init__(self,filename):
+        if self.__validateFile(filename):
+            f = open(filename)
+            self.data = list()
+            self.__read(f)
+        else:
+            raise Exception("Invalid file syntax")
+
+    def __validateFile(self, filename):
         f = open(filename)
-        self.data = list()
-        self.__read(f)
+        fline = f.readline()
+        f.close()
+        pfline = 'Time\t\tH (m)\t\tIAS (km/h)\tG_vert \t\tG_horiz \tRPM \t\tAoA \t\tHydro_m \tHydro_b \tSAU \t\tFors \t\tTrigger \n'
+        if fline == pfline:
+            return True
+        else:
+            return False
 
     def getColumn(self, col):
         ret = list()
