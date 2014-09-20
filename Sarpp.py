@@ -18,7 +18,9 @@ class GUI(QtGui.QDialog):
     def generate(self):
         self.openFile()
         self.plotter = SARPPplot(self.ui.filename.text())
-        pd = QtGui.QProgressDialog("Generating plots", "Cancel", 0, 9)
+        pd = QtGui.QProgressDialog()
+        pd.setRange(0, 9)
+        pd.setLabelText("Generating plots")
         pd.open()
         if self.ui.height.checkState() == 2:
             self.plotter.plotHeight()
@@ -49,28 +51,16 @@ class GUI(QtGui.QDialog):
             pd.setValue(9)
 
     def generateAll(self):
-        self.openFile()
-        self.plotter = SARPPplot(self.ui.filename.text())
-        pd = QtGui.QProgressDialog("Generating plots", "Cancel", 0, 9)
-        pd.open()
-        self.plotter.plotHeight()
-        pd.setValue(1)
-        self.plotter.plotIAS()
-        pd.setValue(2)
-        self.plotter.plotRPM()
-        pd.setValue(3)
-        self.plotter.plotFors()
-        pd.setValue(4)
-        self.plotter.plotAoA()
-        pd.setValue(5)
-        self.plotter.plotSAU()
-        pd.setValue(6)
-        self.plotter.plotTrigger()
-        pd.setValue(7)
-        self.plotter.plotGs()
-        pd.setValue(8)
-        self.plotter.plotHyd()
-        pd.setValue(9)
+        self.ui.height.setCheckState(2);
+        self.ui.ias.setCheckState(2);
+        self.ui.rpm.setCheckState(2);
+        self.ui.fors.setCheckState(2);
+        self.ui.aoa.setCheckState(2);
+        self.ui.sau.setCheckState(2);
+        self.ui.trigger.setCheckState(2);
+        self.ui.g.setCheckState(2);
+        self.ui.hyd.setCheckState(2);
+        self.generate()
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
