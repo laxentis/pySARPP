@@ -12,11 +12,15 @@ class GUI(QtGui.QDialog):
         QtCore.QObject.connect(self.ui.generateButton, QtCore.SIGNAL("clicked()"), self.generate)
 
     def openFile(self):
-        fname = QtGui.QFileDialog.getOpenFileName(self, 'Open file')
+        fdial = QtGui.QFileDialog()
+        fdial.setFilter("Text files (*.txt)")
+        fname = fdial.getOpenFileName(self, 'Open file', '', "Text files (*.txt)")
         self.ui.filename.setText(fname)
 
     def generate(self):
-        self.openFile()
+        fname = self.openFile()
+        if not self.ui.filename.text():
+            return
         self.plotter = SARPPplot(self.ui.filename.text())
         pd = QtGui.QProgressDialog()
         pd.setRange(0, 9)
