@@ -10,17 +10,6 @@ class SARPPplot:
         self.__f = filename
         self.r = SARPPreader(filename)
 
-    def plotAll(self):
-        self.plotRPM()
-        self.plotHeight()
-        self.plotAoA()
-        self.plotIAS()
-        self.plotSAU()
-        self.plotFors()
-        self.plotTrigger()
-        self.plotGs()
-        self.plotHyd()
-
     def plotHeight(self):
         self.__makePlot(self.r.getHeights(), "Height", "Height [m]")
 
