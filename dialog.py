@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialog.ui'
 #
-# Created: Fri Sep 19 19:28:18 2014
+# Created: Sun Sep 21 02:12:28 2014
 #      by: PyQt4 UI code generator 4.11.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -65,6 +65,14 @@ class Ui_Dialog(object):
         self.g.setObjectName(_fromUtf8("g"))
         self.hyd = QtGui.QCheckBox(self.checkboxes)
         self.hyd.setObjectName(_fromUtf8("hyd"))
+        self.splitter_2 = QtGui.QSplitter(self.plots)
+        self.splitter_2.setGeometry(QtCore.QRect(100, 20, 101, 31))
+        self.splitter_2.setOrientation(QtCore.Qt.Vertical)
+        self.splitter_2.setObjectName(_fromUtf8("splitter_2"))
+        self.vertv = QtGui.QCheckBox(self.splitter_2)
+        self.vertv.setObjectName(_fromUtf8("vertv"))
+        self.acceleration = QtGui.QCheckBox(self.splitter_2)
+        self.acceleration.setObjectName(_fromUtf8("acceleration"))
         self.splitter = QtGui.QSplitter(Dialog)
         self.splitter.setGeometry(QtCore.QRect(10, 270, 371, 25))
         self.splitter.setOrientation(QtCore.Qt.Horizontal)
@@ -93,6 +101,8 @@ class Ui_Dialog(object):
         self.trigger.setText(_translate("Dialog", "Trigger", None))
         self.g.setText(_translate("Dialog", "G", None))
         self.hyd.setText(_translate("Dialog", "Hydraulics", None))
+        self.vertv.setText(_translate("Dialog", "Vertical velocity", None))
+        self.acceleration.setText(_translate("Dialog", "Acceleration", None))
         self.generateButton.setText(_translate("Dialog", "Generate", None))
         self.generateAllButton.setText(_translate("Dialog", "Generate all", None))
         self.closeButton.setText(_translate("Dialog", "Close", None))
