@@ -18,6 +18,15 @@ class SARPPplot:
     def plotHeight(self):
         self.__makePlot(self.r.getHeights(), "Height", "Height [m]")
 
+    def plotHeightChange(self):
+        h = self.r.getHeights()
+        chg = []
+        prev = 0
+        for i in h:
+            chg.append(i - prev)
+            prev = i
+        self.__makePlot(chg, "dH", "Vertical velocity [m/s]")
+
     def plotAoA(self):
         self.__makePlot(self.r.getAoA(), "AoA", "AoA [degrees]")
 
@@ -25,7 +34,17 @@ class SARPPplot:
         self.__makePlot(self.r.getRPM(), "RPM", "RPM [%]")
 
     def plotIAS(self):
-        self.__makePlot(self.r.getIAS(), "IAS", "IAS [km/h")
+        self.__makePlot(self.r.getIAS(), "IAS", "IAS [km/h]")
+
+    def plotIASchange(self):
+        ias = self.r.getIAS()
+        chg = []
+        prev = 0
+        for i in ias:
+            i = i / 3.6
+            chg.append(i - prev)
+            prev = i
+        self.__makePlot(chg, "dV", "Acceleration [m/s^2]")
 
     def plotSAU(self):
         self.__makePlot(self.r.getSAU(), "SAU", "SAU state")

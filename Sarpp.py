@@ -31,7 +31,7 @@ class GUI(QtGui.QDialog):
             err.showMessage("The selected file was not found")
         else:
             pd = QtGui.QProgressDialog(self)
-            pd.setRange(0, 9)
+            pd.setRange(0, 11)
             pd.setLabelText("Generating plots")
             pd.open()
             if self.ui.height.checkState() == 2:
@@ -61,6 +61,12 @@ class GUI(QtGui.QDialog):
             if self.ui.hyd.checkState() == 2:
                 self.plotter.plotHyd()
                 pd.setValue(9)
+            if self.ui.vertv.checkState() == 2:
+                self.plotter.plotHeightChange()
+                pd.setValue(10)
+            if self.ui.acceleration.checkState() == 2:
+                self.plotter.plotIASchange()
+                pd.setValue(11)
 
     def generateAll(self):
         self.ui.height.setCheckState(2);
@@ -72,6 +78,8 @@ class GUI(QtGui.QDialog):
         self.ui.trigger.setCheckState(2);
         self.ui.g.setCheckState(2);
         self.ui.hyd.setCheckState(2);
+        self.ui.vertv.setCheckState(2);
+        self.ui.acceleration.setCheckState(2)
         self.generate()
 
 if __name__ == "__main__":
