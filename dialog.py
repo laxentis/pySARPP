@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'dialog.ui'
 #
-# Created: Sun Sep 21 02:12:28 2014
+# Created: Mon Sep 22 20:32:24 2014
 #      by: PyQt4 UI code generator 4.11.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -97,7 +97,7 @@ class Ui_Dialog(object):
         self.aoa.setText(_translate("Dialog", "AoA", None))
         self.rpm.setText(_translate("Dialog", "RPM", None))
         self.sau.setText(_translate("Dialog", "SAU", None))
-        self.fors.setText(_translate("Dialog", "Fors", None))
+        self.fors.setText(_translate("Dialog", "Afterburner", None))
         self.trigger.setText(_translate("Dialog", "Trigger", None))
         self.g.setText(_translate("Dialog", "G", None))
         self.hyd.setText(_translate("Dialog", "Hydraulics", None))

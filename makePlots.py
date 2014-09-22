@@ -47,13 +47,13 @@ class SARPPplot:
         self.__makePlot(chg, "dV", "Acceleration [m/s^2]")
 
     def plotSAU(self):
-        self.__makePlot(self.r.getSAU(), "SAU", "SAU state")
+        self.__makePlot(self.r.getSAU(), "SAU", "SAU state", True)
 
     def plotFors(self):
-        self.__makePlot(self.r.getFors(), "Fors", "Fors")
+        self.__makePlot(self.r.getFors(), "Fors", "Fors", True)
 
     def plotTrigger(self):
-        self.__makePlot(self.r.getTrigger(), "Trigger", "Trigger")
+        self.__makePlot(self.r.getTrigger(), "Trigger", "Trigger", True)
 
     def plotGs(self):
         plt.plot(self.r.getTimes(), self.r.getGv(), label="Vertical")
@@ -73,8 +73,11 @@ class SARPPplot:
         plt.savefig(self.__f + '-Hydro.png')
         plt.clf()
 
-    def __makePlot(self, y, name, ylabel):
+    def __makePlot(self, y, name, ylabel, tristate=False):
         plt.plot(self.r.getTimes(), y)
+        if tristate:
+            x1,x2,y1,y2 = plt.axis()
+            plt.axis((x1,x2,0,2.5))
         plt.xlabel("Time [s]")
         plt.ylabel(ylabel)
         plt.savefig(self.__f + '-' + name + '.png')

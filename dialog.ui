@@ -106,7 +106,7 @@
     </widget>
     <widget class="QCheckBox" name="fors">
      <property name="text">
-      <string>Fors</string>
+      <string>Afterburner</string>
      </property>
     </widget>
     <widget class="QCheckBox" name="trigger">
