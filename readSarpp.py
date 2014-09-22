@@ -1,4 +1,5 @@
 import csv
+import os
 
 class SARPPreader:
     """ Reading SARPP data
@@ -6,12 +7,18 @@ class SARPPreader:
             Time, Height, IAS, G_v, G_h, RPM, AoA, Hyd_m, Hyd_b, SAU, Fors, Trigger
     """
     def __init__(self,filename):
-        if self.__validateFile(filename):
-            f = open(filename)
-            self.data = list()
-            self.__read(f)
-        else:
-            raise Exception("Invalid file syntax")
+        try:
+            if not os.stat(filename).st_size > 0:
+                raise Exception("File empty")
+            else:
+                if self.__validateFile(filename):
+                    f = open(filename)
+                    self.data = list()
+                    self.__read(f)
+                else:
+                    raise Exception("Invalid file syntax")
+        except OSError:
+            raise OSError("File not found")
 
     def __validateFile(self, filename):
         f = open(filename)

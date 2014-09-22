@@ -12,6 +12,8 @@ class SARPPplot:
             self.r = SARPPreader(filename)
         except FileNotFoundError:
             raise FileNotFoundError("Selected file was not found")
+        except OSError:
+            raise OSError("File not found")
         except Exception:
             raise Exception("Invalid file syntax")
 

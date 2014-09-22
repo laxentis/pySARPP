@@ -17,6 +17,32 @@ class GUI(QtGui.QDialog):
         fname = fdial.getOpenFileName(self, 'Open file', '', "Text files (*.txt)")
         self.ui.filename.setText(fname)
 
+    def __countPlots(self):
+        cnt = 0
+        if self.ui.height.checkState() == 2:
+            cnt+=1
+        if self.ui.ias.checkState() == 2:
+            cnt+=1
+        if self.ui.rpm.checkState() == 2:
+            cnt+=1
+        if self.ui.fors.checkState() == 2:
+            cnt+=1
+        if self.ui.aoa.checkState() == 2:
+            cnt+=1
+        if self.ui.sau.checkState() == 2:
+            cnt+=1
+        if self.ui.trigger.checkState() == 2:
+            cnt+=1
+        if self.ui.g.checkState() == 2:
+            cnt+=1
+        if self.ui.hyd.checkState() == 2:
+            cnt+=1
+        if self.ui.vertv.checkState() == 2:
+            cnt+=1
+        if self.ui.acceleration.checkState() == 2:
+            cnt+=1
+        return cnt
+
     def generate(self):
         fname = self.openFile()
         if not self.ui.filename.text():
@@ -29,44 +55,61 @@ class GUI(QtGui.QDialog):
         except FileNotFoundError:
             err = QtGui.QErrorMessage(self)
             err.showMessage("The selected file was not found")
+        except OSError:
+            err = QtGui.QErrorMessage(self)
+            err.showMessage("The selected file was not found")
         else:
+            cnt = self.__countPlots()
+            val = 0
             pd = QtGui.QProgressDialog(self)
-            pd.setRange(0, 11)
+            pd.setRange(0, cnt)
             pd.setLabelText("Generating plots")
+            pd.setAutoClose(True)
             pd.open()
             if self.ui.height.checkState() == 2:
                 self.plotter.plotHeight()
-                pd.setValue(1)
+                val+=1
+                pd.setValue(val)
             if self.ui.ias.checkState() == 2:
                 self.plotter.plotIAS()
-                pd.setValue(2)
+                val+=1
+                pd.setValue(val)
             if self.ui.rpm.checkState() == 2:
                 self.plotter.plotRPM()
-                pd.setValue(3)
+                val+=1
+                pd.setValue(val)
             if self.ui.fors.checkState() == 2:
                 self.plotter.plotFors()
-                pd.setValue(4)
+                val+=1
+                pd.setValue(val)
             if self.ui.aoa.checkState() == 2:
                 self.plotter.plotAoA()
-                pd.setValue(5)
+                val+=1
+                pd.setValue(val)
             if self.ui.sau.checkState() == 2:
                 self.plotter.plotSAU()
-                pd.setValue(6)
+                val+=1
+                pd.setValue(val)
             if self.ui.trigger.checkState() == 2:
                 self.plotter.plotTrigger()
-                pd.setValue(7)
+                val+=1
+                pd.setValue(val)
             if self.ui.g.checkState() == 2:
                 self.plotter.plotGs()
-                pd.setValue(8)
+                val+=1
+                pd.setValue(val)
             if self.ui.hyd.checkState() == 2:
                 self.plotter.plotHyd()
-                pd.setValue(9)
+                val+=1
+                pd.setValue(val)
             if self.ui.vertv.checkState() == 2:
                 self.plotter.plotHeightChange()
-                pd.setValue(10)
+                val+=1
+                pd.setValue(val)
             if self.ui.acceleration.checkState() == 2:
                 self.plotter.plotIASchange()
-                pd.setValue(11)
+                val+=1
+                pd.setValue(val)
 
     def generateAll(self):
         self.ui.height.setCheckState(2);
